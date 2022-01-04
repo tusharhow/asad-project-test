@@ -39,7 +39,7 @@ class ListViewCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: 140,
-      width: 260,
+      width: 200,
       decoration: BoxDecoration(
         color: containerColor,
         borderRadius: BorderRadius.circular(15),

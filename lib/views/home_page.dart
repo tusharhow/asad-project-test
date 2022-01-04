@@ -2,7 +2,10 @@ import 'package:asad_sirs_test_project/constants.dart';
 import 'package:asad_sirs_test_project/re_usable_components/circle_shape_component.dart';
 import 'package:asad_sirs_test_project/re_usable_components/components/list_view_card.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+
+import '../data.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -14,6 +17,8 @@ class HomePage extends StatefulWidget {
 bool isDateClicked = false;
 Clip clip = Clip.none;
 
+final dataController = Get.put(DataController());
+
 class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
@@ -24,31 +29,31 @@ class _HomePageState extends State<HomePage> {
           child: SizedBox(
             height: 900,
             child: Stack(
-              clipBehavior: Clip.none,
+              // clipBehavior: Clip.none,
               children: [
                 Container(
                   height: 6000,
                 ),
                 CircleShapeComponent(
-                  topPosition: 100,
+                  topPosition: 220,
                   rightPosition: 0,
                   height: 250,
                   width: 250,
                 ),
                 CircleShapeComponent(
-                  topPosition: 80,
+                  topPosition: 180,
                   rightPosition: 0,
                   height: 300,
                   width: 300,
                 ),
                 CircleShapeComponent(
-                  topPosition: 60,
+                  topPosition: 180,
                   rightPosition: 0,
                   height: 350,
                   width: 350,
                 ),
                 Positioned(
-                  top: kDefaultPadding + 10,
+                  top: kDefaultPadding + 20,
                   left: 0,
                   child: Padding(
                     padding:
@@ -152,15 +157,21 @@ class _HomePageState extends State<HomePage> {
                               bottom: 0,
                               top: 5,
                               right: -10,
-                              child: Container(
-                                width: 25,
-                                height: 25,
-                                decoration: const BoxDecoration(
-                                  shape: BoxShape.circle,
-                                  color: Colors.white,
-                                ),
-                                child: Center(
-                                  child: Icon(Icons.keyboard_arrow_right),
+                              child: InkWell(
+                                onTap: () {},
+                                child: InkWell(
+                                  onTap: () {},
+                                  child: Container(
+                                    width: 25,
+                                    height: 25,
+                                    decoration: const BoxDecoration(
+                                      shape: BoxShape.circle,
+                                      color: Colors.white,
+                                    ),
+                                    child: Center(
+                                      child: Icon(Icons.keyboard_arrow_right),
+                                    ),
+                                  ),
                                 ),
                               ),
                             ),
@@ -180,52 +191,71 @@ class _HomePageState extends State<HomePage> {
                                 ),
                               ),
                             ),
-                            Positioned(
-                              bottom: 15,
-                              child: Row(
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  DateFormates(
-                                    day: 'S',
-                                    date: '18',
-                                  ),
-                                  SizedBox(
-                                    width: 20,
-                                  ),
-                                  DateFormates(
-                                    day: 'M',
-                                    date: '19',
-                                  ),
-                                  SizedBox(
-                                    width: 20,
-                                  ),
-                                  DateFormates(
-                                    day: 'T',
-                                    date: '20',
-                                  ),
-                                  SizedBox(
-                                    width: 20,
-                                  ),
-                                  DateFormates(
-                                    day: 'W',
-                                    date: '21',
-                                  ),
-                                  SizedBox(
-                                    width: 20,
-                                  ),
-                                  DateFormates(
-                                    day: 'T',
-                                    date: '22',
-                                  ),
-                                  SizedBox(
-                                    width: 20,
-                                  ),
-                                  DateFormates(
-                                    day: 'F',
-                                    date: '22',
-                                  ),
-                                ],
+                            SingleChildScrollView(
+                              scrollDirection: Axis.horizontal,
+                              child: Padding(
+                                padding: const EdgeInsets.symmetric(
+                                  horizontal: kDefaultPadding,
+                                ),
+                                child: Row(
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    DateFormates(
+                                      day: 'S',
+                                      date: '18',
+                                    ),
+                                    SizedBox(
+                                      width: 20,
+                                    ),
+                                    DateFormates(
+                                      day: 'M',
+                                      date: '19',
+                                    ),
+                                    SizedBox(
+                                      width: 20,
+                                    ),
+                                    DateFormates(
+                                      day: 'T',
+                                      date: '20',
+                                    ),
+                                    SizedBox(
+                                      width: 20,
+                                    ),
+                                    DateFormates(
+                                      day: 'W',
+                                      date: '21',
+                                    ),
+                                    SizedBox(
+                                      width: 20,
+                                    ),
+                                    DateFormates(
+                                      day: 'T',
+                                      date: '22',
+                                    ),
+                                    SizedBox(
+                                      width: 20,
+                                    ),
+                                    DateFormates(
+                                      day: 'F',
+                                      date: '22',
+                                    ),
+                                    SizedBox(
+                                      width: 20,
+                                    ),
+                                    DateFormates(
+                                      day: 'S',
+                                      date: '23',
+                                    ),
+                                    SizedBox(
+                                      width: 20,
+                                    ),
+                                    DateFormates(
+                                      day: 'S',
+                                      date: '24',
+                                    ),
+                                  ],
+                                ),
                               ),
                             ),
                           ],
@@ -234,9 +264,325 @@ class _HomePageState extends State<HomePage> {
                     ],
                   ),
                 ),
+                // Positioned(
+                //   left: 30,
+                //   bottom: 800,
+                //   child: Text(
+                //     'Time',
+                //     style: GoogleFonts.poppins(
+                //       fontSize: 18,
+                //       fontWeight: FontWeight.w600,
+                //       color: Colors.white,
+                //     ),
+                //   ),
+                // ),
+                // // Positioned(
+                // // left: 45,
+                // // bottom: 40,
+                // //   child: Row(
+                // //     children: [
+                // // Column(
+                // //   crossAxisAlignment: CrossAxisAlignment.end,
+                // //   mainAxisAlignment: MainAxisAlignment.start,
+                // //   children: [
+                // //     Text(
+                // //       '9:40',
+                // //       style: GoogleFonts.poppins(
+                // //         fontSize: 14,
+                // //         fontWeight: FontWeight.w600,
+                // //         color: Colors.white,
+                // //       ),
+                // //     ),
+                // //     Text(
+                // //       'am',
+                // //       style: GoogleFonts.poppins(
+                // //         fontSize: 14,
+                // //         fontWeight: FontWeight.w600,
+                // //         color: Colors.white70,
+                // //       ),
+                // //     ),
+                // //     SizedBox(
+                // //       height: 80,
+                // //     ),
+                // //     Text(
+                // //       '1:15',
+                // //       style: GoogleFonts.poppins(
+                // //         fontSize: 14,
+                // //         fontWeight: FontWeight.w600,
+                // //         color: Colors.white,
+                // //       ),
+                // //     ),
+                // //     Text(
+                // //       'pm',
+                // //       style: GoogleFonts.poppins(
+                // //         fontSize: 14,
+                // //         fontWeight: FontWeight.w600,
+                // //         color: Colors.white70,
+                // //       ),
+                // //     ),
+                // //     SizedBox(
+                // //       height: 80,
+                // //     ),
+                // //     Text(
+                // //       '4:10',
+                // //       style: GoogleFonts.poppins(
+                // //         fontSize: 14,
+                // //         fontWeight: FontWeight.w600,
+                // //         color: Colors.white,
+                // //       ),
+                // //     ),
+                // //     Text(
+                // //       'pm',
+                // //       style: GoogleFonts.poppins(
+                // //         fontSize: 14,
+                // //         fontWeight: FontWeight.w600,
+                // //         color: Colors.white70,
+                // //       ),
+                // //     ),
+                // //         ],
+                // //       ),
+                // //       SizedBox(width: 20),
+                // //       Container(
+                // //         height: 450,
+                // //         width: 3,
+                // //         color: Colors.white10,
+                // //       ),
+                // //       SizedBox(
+                // //         width: 15,
+                // //       ),
+                // // SizedBox(
+                // //   height: 350,
+                // //   child: Column(
+                // //     children: [
+                // //       SizedBox(
+                // //         height: 80,
+                // //       ),
+                // //       ListViewCard(
+                // //         firstBtnText: 'Completed',
+                // //         label: 'Cloud Architect',
+                // //         time: '9:40 am',
+                // //         firstLineLabel: 'SME:',
+                // //         firstLineText: 'John Hensen',
+                // //         secondLineLabel: 'Candidate:',
+                // //         secondLineText: 'Mark Smith',
+                // //         thirdLineLabel: 'Client:',
+                // //         thirdLineText: 'Facebook',
+                // //         firstBtnColor: Colors.green,
+                // //         secondBtnColor: Colors.amber,
+                // //         secondBtnText: 'Feedback',
+                // //         containerColor: Color(0xff158059),
+                // //       ),
+                // //       SizedBox(
+                // //         height: 15,
+                // //       ),
+                // //       ListViewCard(
+                // //         firstBtnText: 'Completed',
+                // //         label: 'Software Eng.',
+                // //         time: '8:40 am',
+                // //         firstLineLabel: 'SME:',
+                // //         firstLineText: 'Scala Anderson',
+                // //         secondLineLabel: 'Candidate:',
+                // //         secondLineText: 'Mark Smith',
+                // //         thirdLineLabel: 'Client:',
+                // //         thirdLineText: 'Facebook',
+                // //         firstBtnColor: Colors.deepOrange,
+                // //         secondBtnColor: Colors.indigo,
+                // //         secondBtnText: 'Not started',
+                // //         containerColor: kDefaultSeconderyColor,
+                // //       ),
+                // //       SizedBox(
+                // //         height: 15,
+                // //       ),
+                // //       ListViewCard(
+                // //         firstBtnText: 'Completed',
+                // //         label: 'Geography Expert',
+                // //         time: '8:40 am',
+                // //         firstLineLabel: 'SME:',
+                // //         firstLineText: 'Scala Anderson',
+                // //         secondLineLabel: 'Candidate:',
+                // //         secondLineText: 'Mark Smith',
+                // //         thirdLineLabel: 'Client:',
+                // //         thirdLineText: 'Facebook',
+                // //         firstBtnColor: Colors.green,
+                // //         secondBtnColor: Colors.amber,
+                // //         secondBtnText: 'Not started',
+                // //         containerColor: kDefaultSeconderyColor,
+                // //       ),
+                // //       SizedBox(
+                // //         height: 15,
+                // //       ),
+                // //       ListViewCard(
+                // //         firstBtnText: 'Completed',
+                // //         label: 'Accounting Expert',
+                // //         time: '8:40 am',
+                // //         firstLineLabel: 'SME:',
+                // //         firstLineText: 'Scala Anderson',
+                // //         secondLineLabel: 'Candidate:',
+                // //         secondLineText: 'Mark Smith',
+                // //         thirdLineLabel: 'Client:',
+                // //         thirdLineText: 'Facebook',
+                // //         firstBtnColor: Colors.green,
+                // //         secondBtnColor: Colors.amber,
+                // //         secondBtnText: 'Not started',
+                // //         containerColor: kDefaultSeconderyColor,
+                // //       ),
+                // //     ],
+                // //   ),
+                // //       ),
+                // //     ],
+                // //   ),
+                // // ),
+                // Positioned(
+                //     left: 45,
+                //     bottom: 230,
+                //     child: Row(children: [
+                //       Positioned(
+                //         left: 45,
+                //         bottom: 200,
+                //         child: Column(
+                //           crossAxisAlignment: CrossAxisAlignment.end,
+                //           mainAxisAlignment: MainAxisAlignment.start,
+                //           children: [
+                //             Text(
+                //               '9:40',
+                //               style: GoogleFonts.poppins(
+                //                 fontSize: 14,
+                //                 fontWeight: FontWeight.w600,
+                //                 color: Colors.white,
+                //               ),
+                //             ),
+                //             Text(
+                //               'am',
+                //               style: GoogleFonts.poppins(
+                //                 fontSize: 14,
+                //                 fontWeight: FontWeight.w600,
+                //                 color: Colors.white70,
+                //               ),
+                //             ),
+                //             SizedBox(
+                //               height: 80,
+                //             ),
+                //             Text(
+                //               '1:15',
+                //               style: GoogleFonts.poppins(
+                //                 fontSize: 14,
+                //                 fontWeight: FontWeight.w600,
+                //                 color: Colors.white,
+                //               ),
+                //             ),
+                //             Text(
+                //               'pm',
+                //               style: GoogleFonts.poppins(
+                //                 fontSize: 14,
+                //                 fontWeight: FontWeight.w600,
+                //                 color: Colors.white70,
+                //               ),
+                //             ),
+                //             SizedBox(
+                //               height: 80,
+                //             ),
+                //             Text(
+                //               '4:10',
+                //               style: GoogleFonts.poppins(
+                //                 fontSize: 14,
+                //                 fontWeight: FontWeight.w600,
+                //                 color: Colors.white,
+                //               ),
+                //             ),
+                //             Text(
+                //               'pm',
+                //               style: GoogleFonts.poppins(
+                //                 fontSize: 14,
+                //                 fontWeight: FontWeight.w600,
+                //                 color: Colors.white70,
+                //               ),
+                //             ),
+                //           ],
+                //         ),
+                //       ),
+                //       SizedBox(
+                //         width: kDefaultPadding,
+                //       ),
+                //       Column(
+                //         children: [
+                //           SizedBox(
+                //             height: 150,
+                //           ),
+                //           ListViewCard(
+                //             firstBtnText: 'Completed',
+                //             label: 'Cloud Architect',
+                //             time: '9:40 am',
+                //             firstLineLabel: 'SME:',
+                //             firstLineText: 'John Hensen',
+                //             secondLineLabel: 'Candidate:',
+                //             secondLineText: 'Mark Smith',
+                //             thirdLineLabel: 'Client:',
+                //             thirdLineText: 'Facebook',
+                //             firstBtnColor: Colors.green,
+                //             secondBtnColor: Colors.amber,
+                //             secondBtnText: 'Feedback',
+                //             containerColor: Color(0xff158059),
+                //           ),
+                //           SizedBox(
+                //             height: 15,
+                //           ),
+                //           ListViewCard(
+                //             firstBtnText: 'Completed',
+                //             label: 'Software Eng.',
+                //             time: '8:40 am',
+                //             firstLineLabel: 'SME:',
+                //             firstLineText: 'Scala Anderson',
+                //             secondLineLabel: 'Candidate:',
+                //             secondLineText: 'Mark Smith',
+                //             thirdLineLabel: 'Client:',
+                //             thirdLineText: 'Facebook',
+                //             firstBtnColor: Colors.deepOrange,
+                //             secondBtnColor: Colors.indigo,
+                //             secondBtnText: 'Not started',
+                //             containerColor: kDefaultSeconderyColor,
+                //           ),
+                //           SizedBox(
+                //             height: 15,
+                //           ),
+                //           ListViewCard(
+                //             firstBtnText: 'Completed',
+                //             label: 'Geography Expert',
+                //             time: '8:40 am',
+                //             firstLineLabel: 'SME:',
+                //             firstLineText: 'Scala Anderson',
+                //             secondLineLabel: 'Candidate:',
+                //             secondLineText: 'Mark Smith',
+                //             thirdLineLabel: 'Client:',
+                //             thirdLineText: 'Facebook',
+                //             firstBtnColor: Colors.green,
+                //             secondBtnColor: Colors.amber,
+                //             secondBtnText: 'Not started',
+                //             containerColor: kDefaultSeconderyColor,
+                //           ),
+                //           SizedBox(
+                //             height: 15,
+                //           ),
+                //           ListViewCard(
+                //             firstBtnText: 'Completed',
+                //             label: 'Accounting Expert',
+                //             time: '8:40 am',
+                //             firstLineLabel: 'SME:',
+                //             firstLineText: 'Scala Anderson',
+                //             secondLineLabel: 'Candidate:',
+                //             secondLineText: 'Mark Smith',
+                //             thirdLineLabel: 'Client:',
+                //             thirdLineText: 'Facebook',
+                //             firstBtnColor: Colors.green,
+                //             secondBtnColor: Colors.amber,
+                //             secondBtnText: 'Not started',
+                //             containerColor: kDefaultSeconderyColor,
+                //           ),
+                //         ],
+                //       ),
+                //     ])),
                 Positioned(
-                  left: 30,
-                  bottom: 610,
+                  left: 20,
+                  bottom: 620,
                   child: Text(
                     'Time',
                     style: GoogleFonts.poppins(
@@ -247,138 +593,162 @@ class _HomePageState extends State<HomePage> {
                   ),
                 ),
                 Positioned(
-                  left: 45,
-                  bottom: 170,
-                  child: Row(
+                  left: 30,
+                  bottom: 310,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.end,
+                    mainAxisAlignment: MainAxisAlignment.start,
                     children: [
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.end,
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: [
-                          Text(
-                            '9:40',
-                            style: GoogleFonts.poppins(
-                              fontSize: 14,
-                              fontWeight: FontWeight.w600,
-                              color: Colors.white,
-                            ),
-                          ),
-                          Text(
-                            'am',
-                            style: GoogleFonts.poppins(
-                              fontSize: 14,
-                              fontWeight: FontWeight.w600,
-                              color: Colors.white70,
-                            ),
-                          ),
-                          SizedBox(
-                            height: 80,
-                          ),
-                          Text(
-                            '1:15',
-                            style: GoogleFonts.poppins(
-                              fontSize: 14,
-                              fontWeight: FontWeight.w600,
-                              color: Colors.white,
-                            ),
-                          ),
-                          Text(
-                            'pm',
-                            style: GoogleFonts.poppins(
-                              fontSize: 14,
-                              fontWeight: FontWeight.w600,
-                              color: Colors.white70,
-                            ),
-                          ),
-                          SizedBox(
-                            height: 80,
-                          ),
-                          Text(
-                            '4:10',
-                            style: GoogleFonts.poppins(
-                              fontSize: 14,
-                              fontWeight: FontWeight.w600,
-                              color: Colors.white,
-                            ),
-                          ),
-                          Text(
-                            'pm',
-                            style: GoogleFonts.poppins(
-                              fontSize: 14,
-                              fontWeight: FontWeight.w600,
-                              color: Colors.white70,
-                            ),
-                          ),
-                        ],
+                      Text(
+                        '9:40',
+                        style: GoogleFonts.poppins(
+                          fontSize: 14,
+                          fontWeight: FontWeight.w600,
+                          color: Colors.white,
+                        ),
                       ),
-                      SizedBox(width: 20),
-                      Container(
-                        height: 450,
-                        width: 3,
-                        color: Colors.white10,
+                      Text(
+                        'am',
+                        style: GoogleFonts.poppins(
+                          fontSize: 14,
+                          fontWeight: FontWeight.w600,
+                          color: Colors.white70,
+                        ),
                       ),
                       SizedBox(
-                        width: 15,
+                        height: 80,
                       ),
-                      Column(
-                        children: [
-                          SizedBox(
-                            height: 80,
-                          ),
-                          ListViewCard(
-                            firstBtnText: 'Completed',
-                            label: 'Cloud Architect',
-                            time: '9:40 am',
-                            firstLineLabel: 'SME:',
-                            firstLineText: 'John Hensen',
-                            secondLineLabel: 'Candidate:',
-                            secondLineText: 'Mark Smith',
-                            thirdLineLabel: 'Client:',
-                            thirdLineText: 'Facebook',
-                            firstBtnColor: Colors.green,
-                            secondBtnColor: Colors.amber,
-                            secondBtnText: 'Feedback',
-                            containerColor: Color(0xff158059),
-                          ),
-                          SizedBox(
-                            height: 15,
-                          ),
-                          ListViewCard(
-                            firstBtnText: 'Completed',
-                            label: 'Software Eng.',
-                            time: '8:40 am',
-                            firstLineLabel: 'SME:',
-                            firstLineText: 'Scala Anderson',
-                            secondLineLabel: 'Candidate:',
-                            secondLineText: 'Mark Smith',
-                            thirdLineLabel: 'Client:',
-                            thirdLineText: 'Facebook',
-                            firstBtnColor: Colors.deepOrange,
-                            secondBtnColor: Colors.indigo,
-                            secondBtnText: 'Not started',
-                            containerColor: kDefaultSeconderyColor,
-                          ),
-                          SizedBox(
-                            height: 15,
-                          ),
-                          ListViewCard(
-                            firstBtnText: 'Completed',
-                            label: 'Geography Expert',
-                            time: '8:40 am',
-                            firstLineLabel: 'SME:',
-                            firstLineText: 'Scala Anderson',
-                            secondLineLabel: 'Candidate:',
-                            secondLineText: 'Mark Smith',
-                            thirdLineLabel: 'Client:',
-                            thirdLineText: 'Facebook',
-                            firstBtnColor: Colors.green,
-                            secondBtnColor: Colors.amber,
-                            secondBtnText: 'Not started',
-                            containerColor: kDefaultSeconderyColor,
-                          ),
-                        ],
+                      Text(
+                        '1:15',
+                        style: GoogleFonts.poppins(
+                          fontSize: 14,
+                          fontWeight: FontWeight.w600,
+                          color: Colors.white,
+                        ),
+                      ),
+                      Text(
+                        'pm',
+                        style: GoogleFonts.poppins(
+                          fontSize: 14,
+                          fontWeight: FontWeight.w600,
+                          color: Colors.white70,
+                        ),
+                      ),
+                      SizedBox(
+                        height: 80,
+                      ),
+                      Text(
+                        '4:10',
+                        style: GoogleFonts.poppins(
+                          fontSize: 14,
+                          fontWeight: FontWeight.w600,
+                          color: Colors.white,
+                        ),
+                      ),
+                      Text(
+                        'pm',
+                        style: GoogleFonts.poppins(
+                          fontSize: 14,
+                          fontWeight: FontWeight.w600,
+                          color: Colors.white70,
+                        ),
                       ),
                     ],
+                  ),
+                ),
+                Positioned(
+                  left: 80,
+                  bottom: 170,
+                  child: SizedBox(
+                    height: 480,
+                    width: 300,
+                    child: ListView(
+                      shrinkWrap: true,
+                      scrollDirection: Axis.vertical,
+                      children: [
+                        // ListViewCard(
+                        //   firstBtnText: 'Completed',
+                        //   label: 'Cloud Architect',
+                        //   time: '9:40 am',
+                        //   firstLineLabel: 'SME:',
+                        //   firstLineText: 'John Hensen',
+                        //   secondLineLabel: 'Candidate:',
+                        //   secondLineText: 'Mark Smith',
+                        //   thirdLineLabel: 'Client:',
+                        //   thirdLineText: 'Facebook',
+                        //   firstBtnColor: Colors.green,
+                        //   secondBtnColor: Colors.amber,
+                        //   secondBtnText: 'Feedback',
+                        //   containerColor: Color(0xff158059),
+                        // ),
+                        // SizedBox(
+                        //   height: 15,
+                        // ),
+                        // ListViewCard(
+                        //   firstBtnText: 'Completed',
+                        //   label: 'Software Eng.',
+                        //   time: '8:40 am',
+                        //   firstLineLabel: 'SME:',
+                        //   firstLineText: 'Scala Anderson',
+                        //   secondLineLabel: 'Candidate:',
+                        //   secondLineText: 'Mark Smith',
+                        //   thirdLineLabel: 'Client:',
+                        //   thirdLineText: 'Facebook',
+                        //   firstBtnColor: Colors.deepOrange,
+                        //   secondBtnColor: Colors.indigo,
+                        //   secondBtnText: 'Not started',
+                        //   containerColor: kDefaultSeconderyColor,
+                        // ),
+                        // SizedBox(
+                        //   height: 15,
+                        // ),
+                        // ListViewCard(
+                        //   firstBtnText: 'Completed',
+                        //   label: 'Geography Expert',
+                        //   time: '8:40 am',
+                        //   firstLineLabel: 'SME:',
+                        //   firstLineText: 'Scala Anderson',
+                        //   secondLineLabel: 'Candidate:',
+                        //   secondLineText: 'Mark Smith',
+                        //   thirdLineLabel: 'Client:',
+                        //   thirdLineText: 'Facebook',
+                        //   firstBtnColor: Colors.green,
+                        //   secondBtnColor: Colors.amber,
+                        //   secondBtnText: 'Not started',
+                        //   containerColor: kDefaultSeconderyColor,
+                        // ),
+                        // SizedBox(
+                        //   height: 15,
+                        // ),
+                        // ListViewCard(
+                        //   firstBtnText: 'Completed',
+                        //   label: 'Accounting Expert',
+                        //   time: '8:40 am',
+                        //   firstLineLabel: 'SME:',
+                        //   firstLineText: 'Scala Anderson',
+                        //   secondLineLabel: 'Candidate:',
+                        //   secondLineText: 'Mark Smith',
+                        //   thirdLineLabel: 'Client:',
+                        //   thirdLineText: 'Facebook',
+                        //   firstBtnColor: Colors.green,
+                        //   secondBtnColor: Colors.amber,
+                        //   secondBtnText: 'Not started',
+                        //   containerColor: kDefaultSeconderyColor,
+                        // ),
+
+                        SizedBox(
+                          height: 600,
+                          child: ListView.builder(
+                              itemCount: 5,
+                              itemBuilder: (context,index){
+                            return Padding(
+                              padding: const EdgeInsets.only(top: 10),
+                              child: ListViewCard(label: dataController.users[index].jobTitle, firstBtnText: dataController.users[index].firtsBtnText, firstBtnColor: Colors.yellow, secondBtnText: dataController.users[index].secondBtnText, secondBtnColor: Colors.green, firstLineLabel: dataController.users[index].secondBtnText, secondLineLabel: dataController.users[index].jobTitle, thirdLineLabel: dataController.users[index].jobTitle, firstLineText: dataController.users[index].jobTitle, secondLineText: dataController.users[index].jobTitle, thirdLineText:dataController.users[index].jobTitle, time: dataController.users[index].time, containerColor: Colors.blueGrey),
+                            );
+                          }),
+                        )
+                      ],
+                    ),
                   ),
                 ),
                 Positioned(
