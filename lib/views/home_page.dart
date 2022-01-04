@@ -740,12 +740,34 @@ class _HomePageState extends State<HomePage> {
                           height: 600,
                           child: ListView.builder(
                               itemCount: 5,
-                              itemBuilder: (context,index){
-                            return Padding(
-                              padding: const EdgeInsets.only(top: 10),
-                              child: ListViewCard(label: dataController.users[index].jobTitle, firstBtnText: dataController.users[index].firtsBtnText, firstBtnColor: Colors.yellow, secondBtnText: dataController.users[index].secondBtnText, secondBtnColor: Colors.green, firstLineLabel: dataController.users[index].secondBtnText, secondLineLabel: dataController.users[index].jobTitle, thirdLineLabel: dataController.users[index].jobTitle, firstLineText: dataController.users[index].jobTitle, secondLineText: dataController.users[index].jobTitle, thirdLineText:dataController.users[index].jobTitle, time: dataController.users[index].time, containerColor: Colors.blueGrey),
-                            );
-                          }),
+                              itemBuilder: (context, index) {
+                                return Padding(
+                                  padding: const EdgeInsets.only(top: 10),
+                                  child: ListViewCard(
+                                      label:
+                                          dataController.users[index].jobTitle,
+                                      firstBtnText: dataController
+                                          .users[index].firtsBtnText,
+                                      firstBtnColor: Colors.amber,
+                                      secondBtnText: dataController
+                                          .users[index].secondBtnText,
+                                      secondBtnColor: Colors.green,
+                                      firstLineLabel: dataController
+                                          .users[index].firstLineLabel,
+                                      secondLineLabel:
+                                          dataController.users[index].secondLineLabel,
+                                      thirdLineLabel:
+                                          dataController.users[index].thirdLineLabel,
+                                      firstLineText:
+                                          dataController.users[index].firstLineLabelText,
+                                      secondLineText:
+                                          dataController.users[index].secondLineLabelText,
+                                      thirdLineText:
+                                          dataController.users[index].thirdLineLabelText,
+                                      time: dataController.users[index].time,
+                                      containerColor: Colors.indigo),
+                                );
+                              }),
                         )
                       ],
                     ),
